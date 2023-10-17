@@ -54,4 +54,4 @@ Insomnia é um aplicativo ou ferramenta popular usada por desenvolvedores de sof
 claro resolvendo problemas, daí o nome "Insomnia".
 
 ## 📞 Contato pessoal:
-Me contate através do [LinkedIn](https://www.linkedin.com/in/karenlbarcelos/https://github.com)
+Me contate através do [LinkedIn](https://www.linkedin.com/in/karenlbarcelos)

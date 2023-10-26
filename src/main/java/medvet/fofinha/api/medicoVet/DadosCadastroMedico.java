@@ -30,5 +30,4 @@ public record DadosCadastroMedico(
         @Valid
         DadosEndereco endereco) {
 
-
 }

@@ -9,7 +9,7 @@ import medvet.fofinha.api.endereco.Endereco;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")  //para gerar os hash codes somente no id
+@EqualsAndHashCode(of = "id")  //para gerar os hashcodes somente no id
 public class MedicoVet {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

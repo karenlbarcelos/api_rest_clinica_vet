@@ -24,4 +24,11 @@ public class MedicoVet {
     @Embedded
     private Endereco endereco;
 
+    public MedicoVet(DadosCadastroMedico dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.crmv = dados.email();
+        this.especialidade = dados.especialidade();
+        this.endereco = new Endereco(dados.endereco());
+    }
 }

@@ -16,6 +16,7 @@ public class MedicoVet {
     private Long id;
     private String nome;
     private String email;
+    private String telefone;
     private String crmv;
 
     @Enumerated(EnumType.STRING)  //Enumerated pois trata-se de um enum
@@ -27,7 +28,8 @@ public class MedicoVet {
     public MedicoVet(DadosCadastroMedico dados) {
         this.nome = dados.nome();
         this.email = dados.email();
-        this.crmv = dados.email();
+        this.telefone = dados.telefone();
+        this.crmv = dados.crmv();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
     }

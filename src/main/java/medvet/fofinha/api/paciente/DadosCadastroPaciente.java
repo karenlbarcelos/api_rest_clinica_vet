@@ -16,11 +16,16 @@ public record DadosCadastroPaciente(
         @NotBlank
         String nome_tutor,
 
+        @NotNull
+        @Pattern(regexp = "\\d{11}")
+        String cpf,
+
         @NotBlank
         @Email
         String email,
 
-        @NotBlank @Pattern(regexp = "\\d{11}")
+        @NotBlank
+        @Pattern(regexp = "\\d{11}")
         String telefone,
 
         @NotNull @Valid

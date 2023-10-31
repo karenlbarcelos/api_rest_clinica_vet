@@ -21,6 +21,7 @@ public class Paciente {
     private Long id;
     private String nome_paciente;
     private String nome_tutor;
+    private String cpf;
     private String email;
     private String telefone;
 
@@ -33,6 +34,7 @@ public class Paciente {
     public Paciente(DadosCadastroPaciente dados) {
         this.nome_paciente = dados.nome_paciente();
         this.nome_tutor = dados.nome_tutor();
+        this.cpf = dados.cpf();
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.especialidade = dados.especialidade();

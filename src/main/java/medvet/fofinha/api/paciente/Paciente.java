@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medvet.fofinha.api.endereco.DadosEndereco;
 import medvet.fofinha.api.endereco.Endereco;
 import medvet.fofinha.api.medicoVet.Especialidade;
 

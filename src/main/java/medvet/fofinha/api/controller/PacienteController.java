@@ -1,5 +1,6 @@
 package medvet.fofinha.api.controller;
 
+import jakarta.validation.Valid;
 import medvet.fofinha.api.paciente.DadosCadastroPaciente;
 import medvet.fofinha.api.paciente.Paciente;
 import medvet.fofinha.api.paciente.PacienteRepository;
@@ -19,7 +20,7 @@ public class PacienteController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastroPaciente dados){
+    public void cadastrar(@RequestBody @Valid DadosCadastroPaciente dados){
 
         repository.save(new Paciente(dados));
     }

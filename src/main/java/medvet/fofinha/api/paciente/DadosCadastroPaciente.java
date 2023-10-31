@@ -5,11 +5,13 @@ import medvet.fofinha.api.medicoVet.Especialidade;
 
 public record DadosCadastroPaciente(
 
-        String nome,
+        String nome_paciente,
+
+        String nome_tutor,
 
         String email,
 
-        String numero,
+        String telefone,
 
         DadosEndereco endereco,
 

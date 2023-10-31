@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import medvet.fofinha.api.endereco.DadosEndereco;
+import medvet.fofinha.api.endereco.Endereco;
 import medvet.fofinha.api.medicoVet.Especialidade;
 
 @Table(name = "pacientes")
@@ -19,14 +20,23 @@ public class Paciente {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String nome_paciente;
+    private String nome_tutor;
     private String email;
-    private String numero;
+    private String telefone;
 
     @Embedded //os atributos da tabela Endereco serao mapeados como parte da tabela paciente
-    private DadosEndereco endereco;
+    private Endereco endereco;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
+    public Paciente(DadosCadastroPaciente dados) {
+        this.nome_paciente = dados.nome_paciente();
+        this.nome_tutor = dados.nome_tutor();
+        this.email = dados.email();
+        this.telefone = dados.telefone();
+        this.especialidade = dados.especialidade();
+        this.endereco = new Endereco(dados.endereco());
+    }
 }

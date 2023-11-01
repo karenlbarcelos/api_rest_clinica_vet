@@ -7,6 +7,8 @@ import medvet.fofinha.api.medicoVet.DadosListagemMedico;
 import medvet.fofinha.api.medicoVet.MedicoRepository;
 import medvet.fofinha.api.medicoVet.MedicoVet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +28,8 @@ public class MedicoController {
     }
 
     @GetMapping
-    public List<DadosListagemMedico> listar(){
-        return repository.findAll().stream().map(DadosListagemMedico::new).toList(); //conversao de lista de medicos para dados listagem medico
+    public Page<DadosListagemMedico> listar(Pageable paginacao){
+        return repository.findAll(paginacao).map(DadosListagemMedico::new);
     }
-
 
 }

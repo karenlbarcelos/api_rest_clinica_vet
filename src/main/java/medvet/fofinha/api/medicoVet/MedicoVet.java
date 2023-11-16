@@ -15,9 +15,13 @@ public class MedicoVet {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private String email;
+
     private String telefone;
+
     private String crmv;
 
     @Enumerated(EnumType.STRING)  //Enumerated pois trata-se de um enum
@@ -26,7 +30,10 @@ public class MedicoVet {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public MedicoVet(DadosCadastroMedico dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -36,7 +43,6 @@ public class MedicoVet {
     }
 
     public void atualizarInfos(DadosAtualizacaoMedico dados) {
-
         if(dados.nome() != null){
             this.nome = dados.nome();
         }
@@ -48,5 +54,9 @@ public class MedicoVet {
         if(dados.endereco() != null){
             this.endereco.atualizarInfos(dados.endereco());
         }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

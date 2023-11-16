@@ -2,6 +2,8 @@ package medvet.fofinha.api.paciente;
 
 public record DadosListagemPaciente(
 
+        Long id,
+
         String nomePaciente,
 
         String nomeTutor,
@@ -10,7 +12,7 @@ public record DadosListagemPaciente(
 
         String cpf) {
 
-    public DadosListagemPaciente(Paciente paciente){ this(paciente.getNome_paciente(),
+    public DadosListagemPaciente(Paciente paciente){ this(paciente.getId(), paciente.getNome_paciente(),
             paciente.getNome_tutor(), paciente.getEmail(), paciente.getCpf());
     }
 }

@@ -1,10 +1,7 @@
 package medvet.fofinha.api.controller;
 
 import jakarta.validation.Valid;
-import medvet.fofinha.api.paciente.DadosCadastroPaciente;
-import medvet.fofinha.api.paciente.DadosListagemPaciente;
-import medvet.fofinha.api.paciente.Paciente;
-import medvet.fofinha.api.paciente.PacienteRepository;
+import medvet.fofinha.api.paciente.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,14 +18,21 @@ public class PacienteController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroPaciente dados){
+    public void cadastrar(@RequestBody @Valid DadosCadastroPaciente dados) {
         repository.save(new Paciente(dados));
     }
 
     @GetMapping
-    public Page<DadosListagemPaciente> listar(@PageableDefault(size = 10) Pageable paginacao){
+    public Page<DadosListagemPaciente> listar(@PageableDefault(size = 10) Pageable paginacao) {
         return repository.findAll(paginacao).map(DadosListagemPaciente::new);
     }
 
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados) {
+        var paciente = repository.getReferenceById(dados.id());
+        paciente.atualizarInfos(dados);
+        //JPA atualiza dentro de uma transacao, nao é necessario criar um metodo
+    }
 
 }

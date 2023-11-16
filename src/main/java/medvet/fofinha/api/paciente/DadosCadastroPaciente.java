@@ -16,7 +16,7 @@ public record DadosCadastroPaciente(
         @NotBlank
         String nome_tutor,
 
-        @NotNull
+        @NotBlank
         @Pattern(regexp = "\\d{11}")
         String cpf,
 

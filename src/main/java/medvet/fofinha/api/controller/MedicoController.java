@@ -38,7 +38,7 @@ public class MedicoController {
 
     @DeleteMapping("/{id}")  //PathVariable sinaliza que o id do parametro do metodo será o id da url
     @Transactional
-    public void excluir(@PathVariable Long id){
+    public void inativar(@PathVariable Long id){
         var medicoAtualizado = repository.getReferenceById(id);
         medicoAtualizado.excluir();
     }

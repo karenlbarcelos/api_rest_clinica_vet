@@ -24,15 +24,22 @@ public class PacienteController {
 
     @GetMapping
     public Page<DadosListagemPaciente> listar(@PageableDefault(size = 10) Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemPaciente::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
     }
 
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados) {
-        var paciente = repository.getReferenceById(dados.id());
-        paciente.atualizarInfos(dados);
+        var pacienteAtualizado = repository.getReferenceById(dados.id());
+        pacienteAtualizado.atualizarInfos(dados);
         //JPA atualiza dentro de uma transacao, nao é necessario criar um metodo
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void remover(@PathVariable Long id){
+        var pacienteAtualizado = repository.getReferenceById(id);
+        pacienteAtualizado.inativar();
     }
 
 }

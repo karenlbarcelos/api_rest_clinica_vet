@@ -31,7 +31,10 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
+    private Boolean ativo;
+
     public Paciente(DadosCadastroPaciente dados) {
+        this.ativo = true;
         this.nome_paciente = dados.nome_paciente();
         this.nome_tutor = dados.nome_tutor();
         this.cpf = dados.cpf();
@@ -54,5 +57,9 @@ public class Paciente {
         if(dados.endereco() != null){
             this.endereco.atualizarInfos(dados.endereco());
         }
+    }
+
+    public void inativar() {
+        this.ativo = false;
     }
 }
